@@ -517,9 +517,7 @@ namespace _720 {
   @ext(0x6a, 0)
   model MultiInputSetting {
     @values(Values_MultiInput)
-    value: UCH;
-    @maxLength(3)
-    ign: IGN;
+    value: UIN;
   }
 
   /** installer name 1 (first part) */
@@ -585,7 +583,7 @@ namespace _720 {
   }
 
   /** green iq */
-  @inherit(r_1)
+  @inherit(r_1, w_1)
   @ext(0x9a, 0)
   model GreenIQ {
     value: onoff;
@@ -737,6 +735,53 @@ namespace _720 {
     @ext(0x11, 0)
     model HwcHolidayEndTime {
       value: HTI;
+    }
+
+    enum Values_HwcPreset {
+      comfort: 0,
+      eco: 1,
+    }
+
+    /** hwc preset (comfort/eco) */
+    @inherit(r_2, w_2)
+    @ext(0x14, 0)
+    model HwcPreset {
+      @values(Values_HwcPreset)
+      value: UCH;
+    }
+
+    // The following eco settings are flagged inactive by the controller while the preset is comfort.
+
+    /** hwc eco desired temperature */
+    // "Reduced DHW temperature" (factory 49 °C)
+    @inherit(r_2, w_2)
+    @ext(0x15, 0)
+    model HwcEcoTempDesired {
+      value: tempv;
+    }
+
+    /** hwc eco (reduced) cylinder charging hysteresis */
+    // "Red. cyl. charging hysteresis" (factory 5 K)
+    @inherit(r_2, w_2)
+    @ext(0x16, 0)
+    model HwcEcoChargeHyst {
+      value: calibrationv;
+    }
+
+    /** hwc eco min temp after 13 h without draw-off */
+    // "Min. temp. after 13 hrs" (factory 43 °C)
+    @inherit(r_2, w_2)
+    @ext(0x17, 0)
+    model HwcEcoMinTemp13h {
+      value: tempv;
+    }
+
+    /** hwc eco min temp after 24 h without draw-off */
+    // "Min. temp. after 24 hrs" (factory 40 °C)
+    @inherit(r_2, w_2)
+    @ext(0x18, 0)
+    model HwcEcoMinTemp24h {
+      value: tempv;
     }
   }
 
