@@ -1,0 +1,15 @@
+# Installer-level hmu values made pollable: the read line loses its "install" level, the write line keeps it.
+# Local only: upstream intentionally guards installer values.
+file,message
+08.hmu.HW5103.csv,NoiseReductionLevel
+08.hmu.HW5103.csv,HwcMode
+08.hmu.HW5103.csv,CompHysteresisHeating
+08.hmu.HW5103.csv,CompStartHeatingFrom
+08.hmu.HW5103.csv,MaxRemainingDeltaP
+08.hmu.HW5103.csv,BuildingCircuitPumpOutputHeating
+08.hmu.HW5103.csv,BuildingCircuitPumpOutputHwc
+08.hmu.HW5103.csv,BlockTimeAfterRestart
+08.hmu.HW5103.csv,ImmersionHeaterEnabled
+08.hmu.HW5103.csv,EmergencyModeImmersionHeaterEnabled
+08.hmu.HW5103.csv,EEVSteps
+08.hmu.HW5103.csv,HMUSystemStarts

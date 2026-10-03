@@ -1,0 +1,6 @@
+# Messages removed from the build because they always fail on this unit.
+# A message that is not present (any more) only produces a warning.
+file,message
+08.hmu.HW5103.csv,Status
+08.hmu.HW5103.csv,Status02
+08.hmu.HW5103.csv,Status16

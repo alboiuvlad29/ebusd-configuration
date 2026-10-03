@@ -1,0 +1,36 @@
+name: local release
+
+# Builds the TypeSpec sources + local overlay on every push to `local` and publishes the result as a release.
+on:
+  push:
+    branches: [local]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: fetch upstream master (for the comparison report)
+        run: |
+          git remote add upstream https://github.com/john30/ebusd-configuration.git
+          git fetch --no-tags upstream master
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: build (compile, overlay, check, compare)
+        run: ./overlay/build.sh
+      - name: publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="local-$(date -u +%Y%m%d-%H%M)-$(git rev-parse --short HEAD)"
+          notes="Local build of ${GITHUB_SHA} on top of $(git rev-parse --short upstream/master) (upstream master).
+          Install: see LOCAL.md (ebusd_install.sh)."
+          gh release create "$tag" --target "$GITHUB_SHA" --latest --title "$tag" --notes "$notes" \
+            dist/ebusd-config-local.zip dist/ebusd-config-local.tar.gz dist/local_vs_upstream.txt
