@@ -32,5 +32,5 @@ jobs:
           tag="local-$(date -u +%Y%m%d-%H%M)-$(git rev-parse --short HEAD)"
           notes="Local build of ${GITHUB_SHA} on top of $(git rev-parse --short upstream/master) (upstream master).
           Install: see LOCAL.md (ebusd_install.sh)."
-          gh release create "$tag" --target "$GITHUB_SHA" --latest --title "$tag" --notes "$notes" \
+          gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest --title "$tag" --notes "$notes" \
             dist/ebusd-config-local.zip dist/ebusd-config-local.tar.gz dist/local_vs_upstream.txt
