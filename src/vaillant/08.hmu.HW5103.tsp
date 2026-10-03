@@ -160,6 +160,13 @@ namespace Hmu_HW5103 {
     ign: IGN;
   }
 
+  /** default *r for B514 queries */
+  @base(MF, 0x14, 0x5)
+  model rs {
+    @maxLength(2)
+    ign: IGN;
+  }
+
   /** *w for controlling the heat pump */
   @write
   @base(MF, 0x1a, 0x6, 0xff, 0x32)
@@ -396,6 +403,16 @@ namespace Hmu_HW5103 {
   @ext(0x3c)
   model BuildingCircuitFlow {
     @unit("L/h")
+    value: UIN;
+  }
+
+  // adopted from https://github.com/driesenj/ebusd-configuration
+  @inherit(rs)
+  @ext(0x2a, 0x03, 0xff, 0xff)
+  model BuildingCircuitPressure {
+    /** T.0.42 */
+    @unit("bar")
+    @divisor(10)
     value: UIN;
   }
 
