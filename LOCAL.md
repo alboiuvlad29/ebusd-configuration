@@ -49,5 +49,9 @@ sh ebusd_install.sh share          # fallback: copy from /share/ebusd-config/en
 Add-on options (unchanged): `--configpath=/config/ebusd-config/en`, `--pollinterval=2`, `--enablehex --enabledefine`, `--mqttvar=filter-name=…`
 (new message names must match `filter-name` to reach Home Assistant; see `overlay/ebusd_addon_options.json`).
 
-## Upstream PR drafts
-`upstream-prs/*.md` + branches `upstream-hwc-preset`, `-greeniq-write`, `-faulthistory`, `-multiinput-uin` (each on upstream master). Not opened yet.
+## Notes
+- Nothing goes upstream: the former drafts (DHW preset, GreenIQ write, fault history, MultiInputSetting) are normal commits on `local`.
+- `LastError` + `FaultHistory1-9` are local. If upstream #662 (or anything else) lands a message with the same bus ID, the duplicate check fails the build: resolve before releasing, since ebusd stops loading the rest of a file at a duplicate ID.
+- b516 statistics on `26.vr_71`/`76.vwzio` answer with unclear module values (not the heat pump's energy): definitions kept, never polled, excluded from HA discovery by `filter-non-name` (`StatFuel|StatEnvironment|StatElectric|StatEnergy|Solar`).
+- `Lpc*` (b531) is unsupported on `76.vwzio` (empty reply): removed there via `overlay/remove.csv`; on the HMU `LpcFallbackPowerLimit` works (unpolled).
+- GreenIQ write still needs one test from the Home Assistant side. Eco settings have no min/max (manual gives none).
