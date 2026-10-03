@@ -167,36 +167,6 @@ namespace Hmu_HW5103 {
     ign: IGN;
   }
 
-  /** *w for controlling the heat pump */
-  @write
-  @base(MF, 0x1a, 0x6, 0xff, 0x32)
-  model w_2 {
-  }
-
-  /** room target temperature */
-  @inherit(r_2, w_2)
-  @ext(0x1c)
-  model TargetTempHc {
-    // note that this only works without a VRC regulator in the system
-    value: temp;
-  }
-
-  /** cylinder target temperature */
-  @inherit(r_2, w_2)
-  @ext(0x7)
-  model TargetTempHwc {
-    // note that this only works without a VRC regulator in the system
-    value: temp;
-  }
-
-  /** start cooling manually */
-  @inherit(r_2, w_2)
-  @ext(0x1d)
-  model ManualCooling {
-    // note that this only works without a VRC regulator in the system
-    value: onoff;
-  }
-
   @inherit(r_2)
   @ext(0)
   model YieldHcDay {
@@ -294,13 +264,6 @@ namespace Hmu_HW5103 {
     value: hoursum;
   }
 
-  /** operating hours cooling */
-  @inherit(r_2)
-  @ext(0x43)
-  model HoursCool {
-    value: hoursum;
-  }
-
   /** operating hours hot water */
   @inherit(r_2)
   @ext(0x44)
@@ -315,10 +278,10 @@ namespace Hmu_HW5103 {
     value: UIN;
   }
 
-  /** target flow temperature */
+  // not renamed to TargetFlowTemp as in upstream PR #604: the integration uses this name
   @inherit(r_2)
   @ext(0x1f)
-  model TargetFlowTemp {
+  model SupplyTempWeighted {
     value: temp;
   }
 
