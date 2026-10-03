@@ -922,6 +922,95 @@ namespace Hmu_HW5103 {
     value: EXP;
   }
 
+  // Fault history of the heat pump.
+  // Reply: status, time (BCD), date (BCD), error code (F.xx) and 2 unused bytes.
+  // Entry 0 (newest) is only defined as LastError, as ebusd refuses to load the rest of the file on a duplicate ID.
+
+  /** default *r for fault history entries */
+  @base(MF, 0x3, 1)
+  model r_faulthistory {}
+
+  model faultHistoryEntry {
+    status: UCH;
+    /** time */
+    time: BTM;
+    /** date */
+    date: BDA3;
+    /** error number (F.xx) */
+    error: error;
+    @maxLength(2) ign: IGN;
+  }
+
+  /** most recent entry of the heat pump fault history */
+  @inherit(r_faulthistory)
+  @ext(1, 0)
+  model LastError {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 1 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 1)
+  model FaultHistory1 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 2 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 2)
+  model FaultHistory2 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 3 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 3)
+  model FaultHistory3 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 4 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 4)
+  model FaultHistory4 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 5 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 5)
+  model FaultHistory5 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 6 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 6)
+  model FaultHistory6 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 7 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 7)
+  model FaultHistory7 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 8 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 8)
+  model FaultHistory8 {
+    ...faultHistoryEntry;
+  }
+
+  /** heat pump fault history entry 9 (0 = newest) */
+  @inherit(r_faulthistory)
+  @ext(1, 9)
+  model FaultHistory9 {
+    ...faultHistoryEntry;
+  }
+
   /** included parts */
   union _includes {
     Hcmode_HW5103_inc,
