@@ -8,7 +8,7 @@
   "--enabledefine",
   "--enablehex",
   "--pollinterval=2",
-  "--mqttvar=filter-name=status|temp|humidity|yield|count|energy|power|runtime|hours|starts|mode|curve|^load$|^party$|sensor|timer|preset|greeniq|hyst|charge|locktime|^rundata|compressor|noisereduction|compstart|remainingdeltap|pumpoutput|blocktime|immersion|eevsteps|switches|lasterror,filter-seen=1,filter-non-name=Timer|^Z3|^Hc3|Cool|Solar|PrEnergy|StatFuel|StatEnvironment|StatElectric|StatEnergy|^Test|EnableTest|Installer|Phone|Fan2|Lpc|ExcessTemp|RoomTempSwitchOn|AutoOffMode|Adapt|HcStorageTemp|HwcStorageTempTop|HwcStorageTempBottom|HolidayTemp|NightTemp|MaxRoomHumidity|VR92Addr2|VR92Addr3|VR92Addr4|VR92Addr5|VR92Addr6|VR92Addr7|VR92Addr8|ExtHwc|FixedDesiredTemp|OffsetOutsideTemp"
+  "--mqttvar=filter-name=status|temp|humidity|yield|count|energy|power|runtime|hours|starts|mode|curve|^load$|^party$|sensor|timer|preset|greeniq|hyst|charge|locktime|^rundata|compressor|noisereduction|compstart|remainingdeltap|pumpoutput|blocktime|immersion|eevsteps|switches|lasterror|pressure|demand,filter-seen=1,filter-non-name=Timer|^Z3|^Hc3|Cool|Solar|PrEnergy|StatFuel|StatEnvironment|StatElectric|StatEnergy|^Test|EnableTest|Installer|Phone|Fan2|Lpc|ExcessTemp|RoomTempSwitchOn|AutoOffMode|Adapt|HcStorageTemp|HwcStorageTempTop|HwcStorageTempBottom|HolidayTemp|NightTemp|MaxRoomHumidity|VR92Addr2|VR92Addr3|VR92Addr4|VR92Addr5|VR92Addr6|VR92Addr7|VR92Addr8|ExtHwc|FixedDesiredTemp|OffsetOutsideTemp"
  ],
  "network_device": "ens:192.168.1.149:9999"
 }

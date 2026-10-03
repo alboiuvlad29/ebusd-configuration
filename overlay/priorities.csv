@@ -153,3 +153,17 @@ file,message,priority
 15.ctlv3.csv,VR92Addr1RoomTemp,1
 26.vr_71.csv,SensorData1,5
 26.vr_71.csv,SensorData2,5
+# condition sources (so conditional messages resolve soon after an ebusd restart) and newly adopted values
+15.ctlv3.csv,Hc1CircuitType,1
+15.ctlv3.csv,Hc2CircuitType,1
+15.ctlv3.csv,Hc3CircuitType,1
+15.ctlv3.csv,HwcEnabled,1
+15.ctlv3.csv,FM5Config,1
+15.ctlv3.csv,Hc1CoolingEnabled,5
+15.ctlv3.csv,Hc2CoolingEnabled,5
+15.ctlv3.csv,Hc3CoolingEnabled,5
+15.ctlv3.csv,SystemDemand,5
+08.hmu.HW5103.csv,BuildingCircuitPressure,5
+08.hmu.HW5103.csv,Hours,9
+08.hmu.HW5103.csv,HoursHc,9
+08.hmu.HW5103.csv,HoursHwc,9
